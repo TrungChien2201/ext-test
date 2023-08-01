@@ -1,0 +1,9 @@
+@import '@/style/variable.scss';
+
+.btn-yellow {
+  background: linear-gradient(32.95deg, #ffcc21 8.75%, #ff963c 86.64%);
+  border-color: unset;
+  height: 56px;
+  padding: 4 24px;
+  color: $white;
+}

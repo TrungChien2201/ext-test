@@ -1,0 +1,37 @@
+.layout {
+  &-header {
+    background-color: $dark-300;
+
+    ul {
+      background-color: $dark-300;
+      border: none !important;
+
+      li {
+        display: flex !important;
+        align-items: center;
+        padding: 0 24px !important;
+      }
+      .ant-menu-title-content {
+        color: $white;
+        font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif !important;
+      }
+    }
+
+    &__menu {
+      display: flex;
+      align-items: center;
+
+      &--icon {
+        cursor: pointer;
+        padding-left: 60px;
+      }
+    }
+  }
+
+  &-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
