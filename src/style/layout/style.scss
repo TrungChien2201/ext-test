@@ -13,7 +13,8 @@
       }
       .ant-menu-title-content {
         color: $white;
-        font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif !important;
+        font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3",
+          sans-serif !important;
       }
     }
 
@@ -26,6 +27,14 @@
         padding-left: 60px;
       }
     }
+
+    &__logo {
+      cursor: pointer;
+    }
+  }
+
+  &-content {
+    min-height: 75vh;
   }
 
   &-container {
@@ -33,5 +42,82 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &-footer {
+    margin-top: 70px;
+    background-color: $dark-300;
+    padding: 40px 0;
+
+    ul {
+      background-color: $dark-300;
+      border: none;
+
+      li {
+        padding-inline: 24px !important;
+        &::after {
+          border-bottom: none !important;
+        }
+
+        .ant-menu-title-content {
+          color: $white;
+          font-size: 11px;
+          font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3",
+            sans-serif !important;
+        }
+
+        &:first-child {
+          padding-left: 0 !important;
+        }
+      }
+    }
+  }
+
+  &-drawer {
+    background-color: #777777 !important;
+
+    ul {
+      background-color: #777777 !important;
+
+      li {
+        margin: 0 !important;
+        margin-bottom: -0.1px !important;
+        border-radius: 0 !important;
+        border-bottom: 1px solid $dark-300;
+        border-top: 1px solid #a09d9d;
+        height: auto !important;
+        padding: 10px 30px !important;
+
+        .ant-menu-title-content {
+          color: $white;
+          font-size: 18px;
+          font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3",
+          sans-serif !important;
+        }
+
+        &:first-child {
+            border-top: none;
+        }
+
+        &:last-child {
+          border-bottom: none;
+      }
+      }
+    }
+
+    .ant-drawer-body {
+      padding: 0;
+    }
+  }
+}
+
+.arrow-icon {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  animation: all 0.3s ease-in-out;
+
+  img {
+    cursor: pointer;
   }
 }

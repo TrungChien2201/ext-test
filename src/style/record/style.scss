@@ -1,0 +1,253 @@
+.record {
+  padding-top: 40px;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &-session {
+    .ant-col {
+      padding: 24px;
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+      
+      @media screen and (max-width: 767px) {
+        padding: 0;
+        padding-bottom: 80px !important;
+      }
+    }
+    &-item {
+      padding: 0 16px;
+
+      &__border {
+        background-color: $yellow-400;
+        padding: 24px;
+        height: 100%;
+        position: relative;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &__box {
+        height: 100%;
+        position: relative;
+        cursor: pointer;
+
+        &::after {
+          position: absolute;
+          content: "";
+          background-color: rgba($color: rgb(41 38 38), $alpha: 0.7);
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          z-index: 20;
+        }
+      }
+
+      &__content {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        width: 80%;
+        z-index: 100;
+
+        &--title {
+          color: $yellow-400;
+          font-size: 25px;
+          text-transform: uppercase;
+          font-family: Inter;
+          margin: 0;
+          font-weight: 400;
+        }
+
+        &--description {
+          background-color: #ff963c;
+          padding: 2px 20px;
+          color: $white;
+          font-size: 14px;
+          font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3",
+            sans-serif !important;
+        }
+      }
+    }
+  }
+
+  .body-record {
+    background-color: $dark-300;
+    margin-top: 25px;
+
+    &__header {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      padding: 24px 24px 0 30px;
+      &--title {
+        font-size: 15px;
+        color: $white;
+        font-family: Inter;
+        text-transform: uppercase;
+        width: 70px;
+      }
+
+      &--time {
+        font-size: 22px;
+        color: $white;
+        font-family: Inter;
+      }
+    }
+
+    &__chart {
+      padding-inline: 50px;
+    }
+
+    &__filter {
+      display: flex;
+      gap: 20px;
+      padding: 16px 30px;
+
+      span {
+        background-color: $white;
+        color: $yellow-400;
+        cursor: pointer;
+        font-size: 15px;
+        font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3",
+          sans-serif !important;
+        padding: 3px 26px;
+        border-radius: 24px;
+      }
+
+      .active {
+        background-color: $yellow-400;
+        color: $white;
+      }
+    }
+  }
+
+  .myexercise {
+    &-list {
+      display: flex;
+      flex-wrap: wrap;
+      max-height: 230px;
+      overflow: auto;
+      justify-content: space-between;
+      padding-left: 30px;
+      padding-right: 45px;
+      margin-right: 30px;
+      margin-bottom: 30px;
+
+      &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px #777777;
+        border-radius: 10px;
+        background-color: #777777;
+      }
+
+      &::-webkit-scrollbar {
+        width: 10px;
+        background-color: #777777;
+        border-radius: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px #777777;
+        background-color: $yellow-400;
+      }
+    }
+
+    &-item {
+      width: 47%;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #777777;
+      padding-top: 10px;
+
+      & > div {
+        padding-left: 16px;
+      }
+
+      &__title {
+        margin: 0;
+        position: relative;
+        color: $white;
+        font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3",
+          sans-serif !important;
+        font-size: 15px;
+
+        &::after {
+          content: "";
+          width: 5px;
+          height: 5px;
+          background-color: $white;
+          border-radius: 50%;
+          position: absolute;
+          top: 8px;
+          left: -16px;
+        }
+      }
+
+      &__text--yellow {
+        color: $yellow-400;
+        font-family: Inter;
+        font-size: 15px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .mydiary {
+    &-list {
+      margin: 0 -7px;
+    }
+
+    &-title {
+      font-size: 22px;
+      font-family: Inter;
+      color: $dark-300;
+      margin: 0;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    &-item {
+      padding: 7px;
+
+      & > div {
+        border: 1px solid $dark-300;
+        padding: 15px;
+      }
+
+      &__datetime {
+        font-size: 18px;
+        font-family: Inter;
+        width: 100px;
+        margin-bottom: 5px;
+      }
+
+      &__title,
+      &__description {
+        font-size: 12px;
+        font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3",
+          sans-serif !important;
+        letter-spacing: 0.06px;
+      }
+    }
+  }
+}

@@ -4,20 +4,69 @@
 
     &__left {
       width: 42%;
+      position: relative;
+      max-height: 480px;
+
+      @media screen and (min-width: 1660px) {
+        max-height: 500px;
+      }
 
       img {
         width: 100%;
-        height: 312px;
+        height: 100%;
         object-fit: cover;
+      }
+
+      &--info {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        z-index: 100;
+
+        &-box {
+          color: $white;
+          transform: rotate(235deg);
+
+          span {
+            font-family: Inter;
+            font-weight: 400;
+
+            &:first-child {
+              font-size: 18px;
+            }
+
+            &:last-child {
+              font-size: 25px;
+            }
+          }
+        }
+      }
+
+      &--loader {
+        width: 181px;
+        height: 181px;
+        border: 5px solid #fff;
+        border-bottom-color: transparent;
+        border-radius: 50%;
+        box-sizing: border-box;
+        transform: rotate(125deg);
+        animation: rotation 1s linear;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
 
     &__chart {
       width: 58%;
-      height: 312px;
+      max-height: 480px;
       background-color: $dark-400;
-      padding-bottom: 15px;
-      padding-left: 40px;
+      padding: 10px 0 10px 40px;
+
+      @media screen and (max-width: 1900px) {
+        padding: 10px 40px 10px 40px;
+      }
     }
   }
 
@@ -55,10 +104,9 @@
     &__filter {
       display: flex;
       justify-content: center;
-      height: 180px;
+      height: 130px;
       padding: 24px 50px;
       justify-content: space-around;
-      width: 100%;
       &--item {
         width: 116px;
         position: relative;
@@ -77,10 +125,10 @@
 
         &-box {
           z-index: 1;
-         display: flex;
-         justify-content: center;
-         flex-direction: column;
-         align-items: center;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
           text-align: center;
           height: 128px;
           img {
@@ -92,18 +140,27 @@
     }
 
     &__loadmore {
-        display: flex;
-        justify-content: center;
-        margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
 
-        button {
-            width: 296px;
-        }
+      button {
+        width: 296px;
+      }
     }
   }
 }
 
-.infinite-scroll-component  {
-    overflow-x: hidden !important;
-    overflow-y: auto;
+.infinite-scroll-component {
+  overflow-x: hidden !important;
+  overflow-y: auto;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(125deg);
+  }
 }

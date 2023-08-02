@@ -31,7 +31,9 @@ const items: MenuProps["items"] = [
 const Footer = () => {
   return (
     <div className="layout-footer">
-      <Menu mode="horizontal" items={items} />
+      <div className="container">
+        <Menu mode="horizontal" items={items} />
+      </div>
     </div>
   );
 };

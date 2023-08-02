@@ -1,63 +1,5 @@
 import BannerImage from "@/assets/images/d01.jpg";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { Line } from "react-chartjs-2";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      display: false,
-    },
-    title: {
-      display: false,
-    },
-  },
-  scales: {
-    // to remove the labels
-    x: {
-      grid: {
-        color: '#777777'
-      },
-      border: {
-        display: false
-      },
-      ticks: {
-        color: '#fff',
-        fontSize: 8
-      }
-    },
-    y: {
-      grid: {
-        display: false,
-      },
-      border: {
-        display: false
-      },
-      ticks: {
-        display: false
-      }
-    },
-  },
-};
+import ChartLine from "@/components/base/ChartLine";
 
 const labels = [
   "6月",
@@ -74,7 +16,7 @@ const labels = [
   "5月",
 ];
 
-export const data = {
+const data = {
   labels,
   datasets: [
     {
@@ -93,13 +35,26 @@ export const data = {
 };
 
 const Banner = () => {
+  const percent = 75;
+  const currentValue = 5;
+  const total = 21;
   return (
     <div className="homepage-banner">
       <div className="homepage-banner__left">
         <img src={BannerImage} />
+        <div className="homepage-banner__left--info">
+          <div className="homepage-banner__left--loader">
+            <div className="homepage-banner__left--info-box">
+              <span>
+                {currentValue}/{total}
+              </span>{" "}
+              <span>{percent}%</span>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="homepage-banner__chart">
-        <Line options={options} data={data} />
+        <ChartLine data={data} />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
-import { guidGenerator } from "@/utils/constants/function";
-import { useState } from "react";
-import InfiniteScroll from "react-infinite-scroll-component";
+import FilterBackgroundIcon from "@/assets/icons/filter-icon.png";
+import MealIcon from "@/assets/icons/meal.svg";
+import SnackIcon from "@/assets/icons/snack.svg";
 import Category1 from "@/assets/images/d01.jpg";
 import Category2 from "@/assets/images/d02.jpg";
 import Category3 from "@/assets/images/l01.jpg";
@@ -9,13 +9,13 @@ import Category5 from "@/assets/images/l03.jpg";
 import Category6 from "@/assets/images/m01.jpg";
 import Category7 from "@/assets/images/m02.jpg";
 import Category8 from "@/assets/images/m03.jpg";
-import MealIcon from "@/assets/icons/meal.svg";
-import FilterBackgroundIcon from "@/assets/icons/filter-icon.png";
-import SnackIcon from "@/assets/icons/snack.svg";
-import { ICategory } from "@/utils/interface/home";
-import CategoryItem from "../CategoryItem";
-import { Row } from "antd";
 import ButtonCustom from "@/components/base/Button";
+import InfiniteScrollLoading from "@/components/base/InfiniteScrollLoading";
+import { guidGenerator } from "@/utils/constants/function";
+import { ICategory } from "@/utils/interface/home";
+import { Row } from "antd";
+import { useState } from "react";
+import CategoryItem from "../CategoryItem";
 
 const items = [
   { id: guidGenerator(), text: "05.21.Morning", thumbnail: Category1 },
@@ -40,7 +40,7 @@ const Categories = () => {
   const [isHasMore, setIsHasMore] = useState(false);
 
   const fetchData = () => {
-    if (isHasMore) {
+    if (isHasMore && categories.length <= 32) {
       setCategories([...categories, ...items]);
     }
   };
@@ -48,12 +48,21 @@ const Categories = () => {
   const handleLoadMore = () => {
     setIsHasMore(true);
   };
-  console.log(isHasMore);
+
+  const handleFilterCategories = () => {
+    /*The example for the filter function*/
+    setCategories(items);
+  };
+
   return (
     <div className="container">
       <div className="homepage-categories__filter">
         {filterItems.map((item, index) => (
-          <div className="homepage-categories__filter--item" key={index}>
+          <div
+            onClick={handleFilterCategories}
+            className="homepage-categories__filter--item"
+            key={index}
+          >
             <img
               className="homepage-categories__filter--item-background"
               src={FilterBackgroundIcon}
@@ -72,22 +81,13 @@ const Categories = () => {
           ))}
         </Row>
       ) : (
-        <InfiniteScroll
-          dataLength={categories.length} //This is important field to render the next data
-          next={fetchData}
-          hasMore={true}
-          loader={null}
-          // below props only if you need pull down functionality
-          refreshFunction={() => {}}
-          pullDownToRefresh
-          pullDownToRefreshThreshold={50}
-        >
+        <InfiniteScrollLoading length={categories.length} fetchData={fetchData}>
           <Row className="homepage-categories">
             {categories.map((item) => (
               <CategoryItem key={item.id} item={item} />
             ))}
           </Row>
-        </InfiniteScroll>
+        </InfiniteScrollLoading>
       )}
       {!isHasMore && (
         <div className="homepage-categories__loadmore">
